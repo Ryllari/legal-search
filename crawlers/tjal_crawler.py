@@ -4,9 +4,13 @@ from crawlers.base_crawler import BaseCrawler
 
 
 class TJALCrawler(BaseCrawler, ABC):
+    """
+    Crawler for TJ-AL search.
+    """
     def __init__(self, process_number: str):
         super(TJALCrawler, self).__init__(process_number)
         self.base_url = 'https://www2.tjal.jus.br/cpo{}/search.do?cbPesquisa=NUMPROC&tipoNuProcesso=UNIFICADO&{}'
+        self.tj = 'TJ-AL'
 
     def get_first_instance_url(self) -> str:
         first_level, process_search = 'pg', f'dadosConsulta.valorConsultaNuUnificado={self.process_number}'

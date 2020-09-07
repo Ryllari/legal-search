@@ -4,9 +4,13 @@ from crawlers.base_crawler import BaseCrawler
 
 
 class TJMSCrawler(BaseCrawler, ABC):
+    """
+    Crawler for TJ-MS search.
+    """
     def __init__(self, process_number: str):
         super(TJMSCrawler, self).__init__(process_number)
         self.base_url = 'https://esaj.tjms.jus.br/cpo{}'
+        self.tj = 'TJ-MS'
 
     def get_first_instance_url(self) -> str:
         base = f'pg5/show.do?processo.numero={self.process_number}'

@@ -5,8 +5,12 @@ from bs4 import BeautifulSoup
 
 
 class BaseCrawler(ABC):
+    """
+    Abstract Class. Base for any Crawler.
+    """
     def __init__(self, process_number: str):
         self.base_url = ''
+        self.tj = ''
         self.context = None
         self.process_number = process_number
 
@@ -61,7 +65,6 @@ class BaseCrawler(ABC):
         base_context = self.get_base_context()
 
         if not base_context:
-            print("Nao há processos para esta instancia")
             return instance_data
 
         instance_data.update(self.get_base_data(base_context))
@@ -75,6 +78,7 @@ class BaseCrawler(ABC):
         second_url = self.get_second_instance_url()
 
         return {
+            'tribunal': self.tj,
             'process_number': self.process_number,
             'first_instance_data': self.get_instance_data(first_url),
             'second_instance_data': self.get_instance_data(second_url)
