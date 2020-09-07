@@ -1,7 +1,6 @@
-from abc import abstractmethod, ABC
-
 import requests
 
+from abc import abstractmethod, ABC
 from bs4 import BeautifulSoup
 
 
