@@ -1,0 +1,7 @@
+htmlcov
+*.pyc
+.coverage
+
+# PyCharm
+.idea
+
